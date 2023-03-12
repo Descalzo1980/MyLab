@@ -24,7 +24,7 @@ class AddBlogsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAddBlogsBinding.inflate(inflater,container,false)
-        myAdapter = CryptocurrencyAdapter(listOf())
+
         return binding.root
     }
 
@@ -40,11 +40,10 @@ class AddBlogsFragment : Fragment() {
 
 
     private fun observeCryptoCurrency() = binding.cryptocurrencyList.apply {
-        val myRv = binding.cryptocurrencyList
-        myRv.adapter = myAdapter
+        adapter = CryptocurrencyAdapter(emptyList())
         layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,false)
-        viewModel.cryptoCurrency.observe(viewLifecycleOwner){
-            myRv.adapter = CryptocurrencyAdapter(it)
+        viewModel.cryptoCurrency.observe(viewLifecycleOwner){data ->
+            adapter = CryptocurrencyAdapter(data)
         }
     }
 }

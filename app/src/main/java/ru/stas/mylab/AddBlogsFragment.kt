@@ -15,16 +15,13 @@ class AddBlogsFragment : Fragment() {
 
     private var _binding: FragmentAddBlogsBinding? = null
     private val binding get() = _binding!!
-
     private val viewModel: MainViewModel by viewModels()
-    private lateinit var myAdapter: CryptocurrencyAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAddBlogsBinding.inflate(inflater,container,false)
-
         return binding.root
     }
 
